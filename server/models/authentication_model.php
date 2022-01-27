@@ -133,9 +133,9 @@ class authentication_model
         $dbQuery = "DELETE FROM `user_transaction` WHERE `id`=$id";
         $DOQuery = db::DbQuery($dbQuery, 'delete');
         // die(var_dump($DOQuery));
-        // if (array_key_exists('error', $DOQuery)) {
-        //     return false;
-        // }
+        if (is_array($DOQuery) && array_key_exists('error', $DOQuery)) {
+            return false;
+        }
 
         return $DOQuery;
     }
